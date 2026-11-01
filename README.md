@@ -1,4 +1,4 @@
-# Vanity 🛡️ — WhatsApp Web Privacy Extension
+# Vanity 🛡️   WhatsApp Web Privacy Extension
 
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/)
 [![Pure CSS & JS](https://img.shields.io/badge/Dependencies-Zero-blue?style=for-the-badge)](manifest.json)
@@ -7,7 +7,7 @@
 
 Ekstensi browser Chrome / Chromium modern untuk menyamarkan (*blur*) elemen sensitif pada **WhatsApp Web** secara instan demi menjaga privasi obrolan kamu saat berada di tempat umum, kantor, kafe, atau saat sedang *screen sharing*.
 
-Dibuat dengan arsitektur **Zero-Lag GPU Compositor** — tetap lancar dan mulus (120 FPS) saat di-scroll tanpa penurunan performa browser.
+Dibuat dengan arsitektur **Zero-Lag GPU Compositor**   tetap lancar dan mulus (120 FPS) saat di-scroll tanpa penurunan performa browser.
 
 ---
 
