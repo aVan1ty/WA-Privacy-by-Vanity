@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "Vanity",
+  "version": "1.4.0",
+  "description": "Ekstensi privasi WhatsApp Web untuk menyamarkan pesan chat, preview pesan terakhir, foto profil, dan nama kontak.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Vanity",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://web.whatsapp.com/*"
+      ],
+      "css": [
+        "styles/blur.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "commands": {
+    "toggle-blur": {
+      "suggested_key": {
+        "default": "Alt+Z"
+      },
+      "description": "Nyalakan / Matikan Privasi Blur"
+    },
+    "lock-screen": {
+      "suggested_key": {
+        "default": "Alt+X"
+      },
+      "description": "Kunci Layar WhatsApp"
+    }
+  }
+}

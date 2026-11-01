@@ -1,0 +1,332 @@
+/* ========================================================
+   Vanity - WhatsApp Web Privacy Styles (Ultra Performance)
+   ======================================================== */
+
+:root {
+  --wa-blur-preview-val: 5px;
+  --wa-blur-messages-val: 8px;
+  --wa-blur-names-val: 5px;
+  --wa-blur-photos-val: 5px;
+  --wa-blur-media-val: 12px;
+  --wa-blur-input-val: 5px;
+  --wa-unblur-delay: 0.4s;
+}
+
+/* ========================================================
+   0. CRITICAL HARD IMMUNITIES
+   Tidak boleh ada efek blur sama sekali pada:
+   - Tombol Folder Arsip di Sidebar
+   - Navigasi & Ikon Meta AI
+   - Tombol Kontrol Footer (Send, Voice/Mic, Stiker, Emoji, Attach)
+   ======================================================== */
+
+/* A. Tombol Baris Arsip (Archive Folder di Sidebar Utama) */
+#side div[role="button"]:has(span[data-icon*="archive"]),
+#side button:has(span[data-icon*="archive"]),
+#side div[role="button"][aria-label*="archive" i],
+#side button[aria-label*="archive" i] {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* B. Meta AI & Navigation Rail */
+div[role="navigation"],
+div[role="navigation"] *,
+[aria-label*="Meta AI" i],
+[aria-label*="Meta AI" i] *,
+[data-testid*="meta-ai" i],
+[data-testid*="meta-ai" i] *,
+span[data-icon*="meta"],
+span[data-icon*="meta"] * {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* C. Footer Controls Immunity (Send, Mic/Voice, Stiker, Emoji, Attach) */
+footer button,
+footer button *,
+footer [role="button"],
+footer [role="button"] *,
+footer [data-testid="send"],
+footer [data-testid="send"] *,
+footer [data-testid="ptt"],
+footer [data-testid="ptt"] *,
+footer [data-testid*="emoji"],
+footer [data-testid*="emoji"] *,
+footer [data-testid*="sticker"],
+footer [data-testid*="sticker"] *,
+footer [data-testid*="attach"],
+footer [data-testid*="attach"] *,
+footer span[data-icon],
+footer span[data-icon] *,
+footer svg,
+footer svg * {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* D. Quoted Message / Reply Chat Immunity (Kutipan balasan pesan tidak boleh di-blur oleh mode media) */
+html.wa-active:not(.wa-blur-messages) [data-testid*="quoted-message"],
+html.wa-active:not(.wa-blur-messages) [data-testid*="quoted-message"] * {
+  filter: none !important;
+}
+
+/* --------------------------------------------------------
+   1. LAST MESSAGES PREVIEW (Daftar Chat Kiri & Archive Drawer)
+   -------------------------------------------------------- */
+html.wa-active.wa-blur-preview div.xjbqb8w.x1iyjqo2.x1f6kntn.x1fc57z9.x6ikm8r.x10wlt62.x1yc453h.xlyipyv.xuxw1ft.xo1l8bm,
+html.wa-active.wa-blur-preview .vQ0w7 {
+  filter: blur(var(--wa-blur-preview-val, 5px)) !important;
+  transition: filter 0.12s ease 0s !important;
+  user-select: none;
+}
+
+/* Hover Reveal dengan Delay */
+html.wa-active.wa-blur-preview [data-testid="cell-frame-container"]:hover div.xjbqb8w.x1iyjqo2.x1f6kntn.x1fc57z9.x6ikm8r.x10wlt62.x1yc453h.xlyipyv.xuxw1ft.xo1l8bm,
+html.wa-active.wa-blur-preview div.xjbqb8w.x1iyjqo2.x1f6kntn.x1fc57z9.x6ikm8r.x10wlt62.x1yc453h.xlyipyv.xuxw1ft.xo1l8bm:hover,
+html.wa-active.wa-blur-preview [data-testid="cell-frame-container"]:hover .vQ0w7,
+html.wa-active.wa-blur-preview .vQ0w7:hover {
+  filter: blur(0) !important;
+  transition: filter 0.12s ease var(--wa-unblur-delay, 0.4s) !important;
+  user-select: auto;
+}
+
+/* --------------------------------------------------------
+   2. ALL MESSAGES IN CHAT (Balon Obrolan di Chat Panel)
+   -------------------------------------------------------- */
+html.wa-active.wa-blur-messages #main div[data-testid="msg-container"] {
+  filter: blur(var(--wa-blur-messages-val, 8px)) !important;
+  transition: filter 0.12s ease 0s !important;
+  user-select: none;
+}
+
+/* Hover unblur */
+html.wa-active.wa-blur-messages #main div[role="row"]:hover div[data-testid="msg-container"],
+html.wa-active.wa-blur-messages #main div[data-testid="msg-container"]:hover {
+  filter: blur(0) !important;
+  transition: filter 0.12s ease var(--wa-unblur-delay, 0.4s) !important;
+  user-select: auto !important;
+}
+
+/* --------------------------------------------------------
+   3. USERS / GROUP NAMES (Nama Kontak & Grup)
+   -------------------------------------------------------- */
+/* A. Nama kontak & grup di daftar chat (Hanya judul chat di grid, TIDAK mem-blur tombol arsip) */
+html.wa-active.wa-blur-names :is(#side, #pane-side, [data-testid*="drawer"]) div[role="gridcell"] [data-testid="cell-frame-title"],
+html.wa-active.wa-blur-names header div[role="button"].x78zum5.xdt5ytf.x1iyjqo2.xl56j7k.xeuugli > div:nth-child(1),
+html.wa-active.wa-blur-names #main header span[title],
+html.wa-active.wa-blur-names #main span[data-testid="author"] {
+  filter: blur(var(--wa-blur-names-val, 5px)) !important;
+  transition: filter 0.12s ease 0s !important;
+  user-select: none;
+}
+
+/* Hover unblur (mendukung hover pada teks nama maupun pada kartu baris chat) */
+html.wa-active.wa-blur-names [data-testid="cell-frame-container"]:hover [data-testid="cell-frame-title"],
+html.wa-active.wa-blur-names :is(#side, #pane-side, [data-testid*="drawer"]) div[role="gridcell"] [data-testid="cell-frame-title"]:hover,
+html.wa-active.wa-blur-names header div[role="button"].x78zum5.xdt5ytf.x1iyjqo2.xl56j7k.xeuugli > div:nth-child(1):hover,
+html.wa-active.wa-blur-names header:hover div[role="button"].x78zum5.xdt5ytf.x1iyjqo2.xl56j7k.xeuugli > div:nth-child(1),
+html.wa-active.wa-blur-names #main header:hover span[title],
+html.wa-active.wa-blur-names #main header span[title]:hover,
+html.wa-active.wa-blur-names #main div[role="row"]:hover span[data-testid="author"],
+html.wa-active.wa-blur-names #main span[data-testid="author"]:hover {
+  filter: blur(0) !important;
+  transition: filter 0.12s ease var(--wa-unblur-delay, 0.4s) !important;
+  user-select: auto !important;
+}
+
+/* --------------------------------------------------------
+   4. PROFILE PICTURES (HANYA Foto Profil Kontak & Grup)
+   TIDAK BOLEH mem-blur Meta AI, stiker chat, ataupun tombol kontrol!
+   -------------------------------------------------------- */
+/* A. Foto profil di daftar chat kiri & halaman arsip */
+html.wa-active.wa-blur-photos :is(#side, #pane-side, [data-testid*="drawer"]) div.x78zum5>div.x6s0dn4.x78zum5.x1c4vz4f.x2lah0s.x1y332i5.x18d9i69.xexx8yu.xbmws1g > div,
+html.wa-active.wa-blur-photos header div[role="button"]:first-child div.x1n2onr6.x16ye13r.x5lhr3w,
+html.wa-active.wa-blur-photos #main div.x16ye13r.x10l6tqk.x1wnpwf8.x1vjfegm div[role="button"] {
+  filter: blur(var(--wa-blur-photos-val, 5px)) !important;
+  transition: filter 0.12s ease 0s !important;
+}
+
+/* Hover to reveal profile picture */
+html.wa-active.wa-blur-photos :is(#side, #pane-side, [data-testid*="drawer"]) div.x78zum5>div.x6s0dn4.x78zum5.x1c4vz4f.x2lah0s.x1y332i5.x18d9i69.xexx8yu.xbmws1g > div:hover,
+html.wa-active.wa-blur-photos header div[role="button"]:first-child div.x1n2onr6.x16ye13r.x5lhr3w:hover,
+html.wa-active.wa-blur-photos #main div.x16ye13r.x10l6tqk.x1wnpwf8.x1vjfegm div[role="button"]:hover,
+html.wa-active.wa-blur-photos #main div[role="row"]:hover div.x16ye13r.x10l6tqk.x1wnpwf8.x1vjfegm div[role="button"] {
+  filter: blur(0) !important;
+  transition: filter 0.12s ease var(--wa-unblur-delay, 0.4s) !important;
+}
+
+/* --------------------------------------------------------
+   5. MEDIA PREVIEW (Gambar, Video, Audio, Stiker di dalam Chat)
+   Hanya aktif saat opsi 'Media preview' dinyalakan!
+   -------------------------------------------------------- */
+html.wa-active.wa-blur-media #main div[data-testid="msg-container"] :is(div, button)[role="button"][class]:not([data-testid*="quoted-message"], [data-testid*="quoted-message"] *, .x13yyeie, .x1dxgm4b, .x7fhd9j, ._ak3u, ._aju3, [data-js-context-icon], .x1a06ls3, .x6ikm8r.x10wlt62.xlyipyv),
+html.wa-active.wa-blur-media #main span[data-testid="sticker-container"]:has(>[role="button"], >button),
+html.wa-active.wa-blur-media #main div.x78zum5.x6s0dn4.x15zctf7.x1xegmmw.xdwrcjd,
+html.wa-active.wa-blur-media #main [data-testid="link-preview-container"] > img,
+html.wa-active.wa-blur-media #main [data-testid="link-preview-container"] > div > img {
+  filter: blur(var(--wa-blur-media-val, 12px)) !important;
+  transition: filter 0.12s ease 0s !important;
+}
+
+/* Hover unblur media */
+html.wa-active.wa-blur-media #main div[data-testid="msg-container"]:hover :is(div, button)[role="button"][class]:not([data-testid*="quoted-message"], [data-testid*="quoted-message"] *, .x13yyeie, .x1dxgm4b, .x7fhd9j, ._ak3u, ._aju3, [data-js-context-icon], .x1a06ls3, .x6ikm8r.x10wlt62.xlyipyv),
+html.wa-active.wa-blur-media #main div[role="row"]:hover span[data-testid="sticker-container"],
+html.wa-active.wa-blur-media #main span[data-testid="sticker-container"]:hover,
+html.wa-active.wa-blur-media #main div.x78zum5.x6s0dn4.x15zctf7.x1xegmmw.xdwrcjd:hover,
+html.wa-active.wa-blur-media #main [data-testid="link-preview-container"] > img:hover,
+html.wa-active.wa-blur-media #main [data-testid="link-preview-container"] > div > img:hover {
+  filter: blur(0) !important;
+  transition: filter 0.12s ease var(--wa-unblur-delay, 0.4s) !important;
+}
+
+/* --------------------------------------------------------
+   6. TEXT INPUT (Hanya Kolom Ketik Pesan)
+   Teks yang sedang diketik atau di dalam kolom pesan otomatis
+   ter-blur, dan terbuka (unblur) saat kursor mouse diarahkan.
+   Tombol kirim, mic, stiker, dan lampiran tetap 100% aman dan jelas.
+   -------------------------------------------------------- */
+html.wa-active.wa-blur-input footer div.lexical-rich-text-input,
+html.wa-active.wa-blur-input footer div[contenteditable="true"]:not(.lexical-rich-text-input *),
+html.wa-active.wa-blur-input [data-testid="media-caption-input-container"] div[contenteditable="true"] {
+  filter: blur(var(--wa-blur-input-val, 5px)) !important;
+  transition: filter 0.12s ease 0s !important;
+}
+
+/* Hover Reveal saat kursor diarahkan ke area ketik pesan */
+html.wa-active.wa-blur-input footer div.lexical-rich-text-input:hover,
+html.wa-active.wa-blur-input footer div[contenteditable="true"]:not(.lexical-rich-text-input *):hover,
+html.wa-active.wa-blur-input [data-testid="media-caption-input-container"] div[contenteditable="true"]:hover {
+  filter: blur(0) !important;
+  transition: filter 0.12s ease var(--wa-unblur-delay, 0.2s) !important;
+}
+
+/* --------------------------------------------------------
+   7. LOCK SCREEN OVERLAY
+   -------------------------------------------------------- */
+#wa-privacy-lock-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 20, 26, 0.9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  color: #e9edef;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#wa-privacy-lock-screen.is-locked {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wa-lock-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 360px;
+  width: 90%;
+  padding: 32px 24px;
+  background: #1f2c34;
+  border: 1px solid rgba(134, 150, 160, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.wa-lock-icon {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: #00a884;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wa-lock-icon svg {
+  width: 36px;
+  height: 36px;
+  fill: #ffffff;
+}
+
+.wa-lock-title {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: #e9edef;
+}
+
+.wa-lock-subtitle {
+  font-size: 13px;
+  color: #8696a0;
+  margin: 0 0 22px 0;
+  line-height: 1.45;
+}
+
+.wa-unlock-btn {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #00a884;
+  color: #111b21;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.wa-unlock-btn:hover {
+  background: #02906f;
+}
+
+.wa-lock-password-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.wa-lock-input {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid #3b4a54;
+  background: #111b21;
+  color: #e9edef;
+  font-size: 14.5px;
+  box-sizing: border-box;
+  outline: none;
+  text-align: center;
+}
+
+.wa-lock-input:focus {
+  border-color: #00a884;
+}
+
+.wa-lock-error {
+  color: #ea4335;
+  font-size: 12px;
+  margin-top: -4px;
+  display: none;
+}
+
+.wa-lock-hint {
+  font-size: 11.5px;
+  color: #667781;
+  margin-top: 16px;
+}

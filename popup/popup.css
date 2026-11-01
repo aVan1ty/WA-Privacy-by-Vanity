@@ -1,0 +1,406 @@
+/* ========================================================
+   Vanity - WhatsApp Dark Mode Popup Theme
+   ======================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 310px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #111b21;
+  color: #e9edef;
+  font-size: 13px;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+.popup-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 14px 10px 14px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 11px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #202c33;
+  border: 1.5px solid #00a884;
+  box-shadow: 0 0 6px rgba(0, 168, 132, 0.4);
+}
+
+.brand-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #e9edef;
+  letter-spacing: 0.2px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 6px;
+  color: #aebac1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #00a884;
+}
+
+.icon-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* Master Switch Card */
+.master-switch-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background: rgba(0, 168, 132, 0.1);
+  border: 1px solid rgba(0, 168, 132, 0.25);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.master-text {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.master-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #00a884;
+}
+
+.key-badge {
+  font-size: 10px;
+  font-weight: 600;
+  background: rgba(0, 168, 132, 0.2);
+  color: #00d757;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 168, 132, 0.4);
+}
+
+/* Toggles Group */
+.toggles-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: 7px;
+  background-color: transparent;
+  transition: background-color 0.15s ease;
+}
+
+.toggle-row:hover {
+  background-color: #202c33;
+}
+
+.toggle-row.highlight {
+  background-color: rgba(0, 168, 132, 0.07);
+  border: 1px solid rgba(0, 168, 132, 0.18);
+}
+
+.row-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-title {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #e9edef;
+}
+
+.row-subtitle {
+  font-size: 10.5px;
+  color: #8696a0;
+  margin-top: 1px;
+}
+
+.autolock-flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.time-input {
+  width: 38px;
+  padding: 2px 3px;
+  border: 1px solid #3b4a54;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  outline: none;
+  background: #202c33;
+  color: #e9edef;
+}
+
+.time-input:focus {
+  border-color: #00a884;
+}
+
+.unit-text {
+  font-size: 11px;
+  color: #8696a0;
+}
+
+/* Switches */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #374248;
+  transition: 0.2s ease;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #8696a0;
+  transition: 0.2s ease;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+input:checked + .slider {
+  background-color: #00a884;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+  background-color: #ffffff;
+}
+
+/* Bottom Action Button */
+.bottom-actions {
+  margin-bottom: 6px;
+}
+
+.btn-lock {
+  width: 100%;
+  padding: 9px 12px;
+  background-color: #00a884;
+  color: #111b21;
+  border: none;
+  border-radius: 7px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 168, 132, 0.25);
+}
+
+.btn-lock:hover {
+  background-color: #02906f;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 168, 132, 0.4);
+}
+
+.btn-lock svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Settings Drawer (Collapsible) */
+.settings-drawer {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111b21;
+  z-index: 10;
+  padding: 12px 14px;
+  flex-direction: column;
+}
+
+.settings-drawer.open {
+  display: flex;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #e9edef;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(134, 150, 160, 0.15);
+  margin-bottom: 12px;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  color: #8696a0;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.15s ease;
+}
+
+.close-btn:hover {
+  color: #e9edef;
+}
+
+.drawer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.setting-title-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #e9edef;
+}
+
+.blur-val {
+  font-weight: 600;
+  color: #00a884;
+}
+
+.slider-range {
+  width: 100%;
+  accent-color: #00a884;
+  cursor: pointer;
+  background: #202c33;
+}
+
+.setting-subhead {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8696a0;
+}
+
+.pwd-group {
+  display: flex;
+  gap: 6px;
+}
+
+.pwd-input {
+  flex: 1;
+  padding: 6px 8px;
+  background: #202c33;
+  border: 1px solid #3b4a54;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #e9edef;
+  outline: none;
+}
+
+.pwd-input:focus {
+  border-color: #00a884;
+}
+
+.btn-save {
+  padding: 6px 12px;
+  background-color: #00a884;
+  color: #111b21;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-save:hover {
+  background-color: #02906f;
+  color: #ffffff;
+}
+
+.save-status {
+  font-size: 11px;
+  color: #00d757;
+  display: none;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 10.5px;
+  color: #667781;
+  padding-top: 5px;
+  border-top: 1px solid rgba(134, 150, 160, 0.12);
+}

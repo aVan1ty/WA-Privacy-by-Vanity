@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanity</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-brand">
+        <img src="../icons/icon48.png" alt="Vanity" class="brand-avatar">
+        <span class="brand-title">Vanity</span>
+      </div>
+      <button id="btn-toggle-settings" class="icon-btn" title="Pengaturan">
+        <svg viewBox="0 0 24 24">
+          <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Master Switch Card -->
+    <div class="master-switch-card">
+      <div class="master-text">
+        <span class="master-label">Master Switch</span>
+        <span class="key-badge">Alt + Z</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggle-enabled">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Toggles List -->
+    <div class="toggles-group">
+      <!-- Last Messages Preview -->
+      <div class="toggle-row highlight">
+        <div class="row-info">
+          <span class="row-title">Last messages preview</span>
+          <span class="row-subtitle">Pesan terakhir di daftar chat</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-lastMessagesPreview">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- All Messages in Chat -->
+      <div class="toggle-row">
+        <div class="row-info">
+          <span class="row-title">All messages in chat</span>
+          <span class="row-subtitle">Semua balon obrolan dalam chat</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-allMessages">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Users / Group Names -->
+      <div class="toggle-row">
+        <div class="row-info">
+          <span class="row-title">Users/Group names</span>
+          <span class="row-subtitle">Nama kontak dan nama grup</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-userNames">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Profile Pictures -->
+      <div class="toggle-row">
+        <div class="row-info">
+          <span class="row-title">Profile pictures</span>
+          <span class="row-subtitle">Foto profil kontak & grup</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-profilePictures">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Media Preview -->
+      <div class="toggle-row">
+        <div class="row-info">
+          <span class="row-title">Media preview</span>
+          <span class="row-subtitle">Foto, video, stiker & audio</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-mediaPreview">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Text Input -->
+      <div class="toggle-row">
+        <div class="row-info">
+          <span class="row-title">Text input</span>
+          <span class="row-subtitle">Teks yang sedang diketik</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-textInput">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Auto Lock -->
+      <div class="toggle-row">
+        <div class="row-info">
+          <div class="autolock-flex">
+            <span class="row-title">Auto lock screen</span>
+            <input type="number" id="input-autolock" min="1" max="120" value="10" class="time-input" title="Menit">
+            <span class="unit-text">menit</span>
+          </div>
+          <span class="row-subtitle">Kunci saat tidak aktif</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="toggle-autolock">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Quick Lock Action Button -->
+    <div class="bottom-actions">
+      <button id="btn-lock-now" class="btn-lock">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        <span>Lock screen (Alt+X)</span>
+      </button>
+    </div>
+
+    <!-- Collapsible Settings Panel -->
+    <div id="settings-panel" class="settings-drawer">
+      <div class="drawer-header">
+        <span>Pengaturan Lanjutan</span>
+        <button id="btn-close-settings" class="close-btn">&times;</button>
+      </div>
+
+      <div class="drawer-content">
+        <div class="setting-item">
+          <div class="setting-title-row">
+            <span>Intensitas Blur:</span>
+            <span id="label-blur-val" class="blur-val">5px</span>
+          </div>
+          <input type="range" id="range-blur" min="3" max="15" value="5" step="1" class="slider-range">
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-title-row">
+            <span>Delay Buka Blur:</span>
+            <span id="label-delay-val" class="blur-val">0.4 detik</span>
+          </div>
+          <input type="range" id="range-delay" min="0" max="2.0" value="0.4" step="0.1" class="slider-range">
+        </div>
+
+        <div class="setting-item">
+          <span class="setting-subhead">Password Kunci Layar (Opsional)</span>
+          <div class="pwd-group">
+            <input type="password" id="input-password" placeholder="Kosongkan jika tanpa password" class="pwd-input">
+            <button id="btn-save-pwd" class="btn-save">Simpan</button>
+          </div>
+          <span id="pwd-msg" class="save-status">Tersimpan!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Vanity v1.4.0</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
